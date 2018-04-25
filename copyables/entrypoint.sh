@@ -22,4 +22,9 @@ if [[ "$VNC_PASSWORD" != "" ]]; then
   export X11VNC_AUTH="-passwd $VNC_PASSWORD"
 fi
 
+# create chrome home folder and skip "First Run" dialog
+mkdir -p /home/chrome/.config/google-chrome
+touch "/home/chrome/.config/google-chrome/First Run"
+chown -R chrome:chrome /home/chrome/.config/google-chrome
+
 exec "$@"
